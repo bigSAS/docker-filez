@@ -1,10 +1,21 @@
 FROM python:3.8.1-slim-buster
 
-RUN mkdir /var/reports
-COPY start-server.sh /var/reports/start-server.sh
-RUN chmod +x /var/reports/start-server.sh
-WORKDIR /var/reports/
+RUN apt-get update
+RUN apt-get install nginx -y
 
-EXPOSE 3333
+COPY nginx.default /etc/nginx/sites-available/default
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN mkdir /opt/app
+COPY . /opt/app/
+RUN chown -R www-data:www-data /opt/app
+
+WORKDIR /opt/app/
+
+EXPOSE 80
 STOPSIGNAL SIGTERM
-CMD ["/var/reports/start-server.sh"]
+CMD ["/opt/app/start-server.sh"]
