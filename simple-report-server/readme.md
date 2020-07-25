@@ -6,6 +6,6 @@
 docker run -d --restart always \
     --name simple-report-server \
     -v test-reports:/opt/app \
-    -p 3333:80 \
+    -p 3333:8000 \
     simple-report-server:latest
 ```
