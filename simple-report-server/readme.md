@@ -5,7 +5,7 @@
 ```
 docker run -d --restart always \
     --name simple-report-server \
-    -v test-reports:/var/reports:ro
+    -v test-reports:/var/reports:ro \
     -p 3333:33333 \
     simple-report-server:latest
 ```

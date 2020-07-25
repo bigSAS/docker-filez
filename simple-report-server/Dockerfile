@@ -7,4 +7,4 @@ WORKDIR /var/reports/
 
 EXPOSE 3333
 STOPSIGNAL SIGTERM
-CMD ["/opt/app/start-server.sh"]
+CMD ["/var/reports/start-server.sh"]
