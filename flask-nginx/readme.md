@@ -1,8 +1,10 @@
 ### Build image   
-`docker build -t flask-app-nginx:latest .`   
+```shell
+docker build -t flask-app-nginx:latest .
+```   
 
 ### Run container   
-```
+```shell
 docker run -d --name container-name \
     -p 8088:80 \
     -e GUNICORN_WORKERS=3 \
