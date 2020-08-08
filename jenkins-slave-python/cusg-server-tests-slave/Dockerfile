@@ -9,4 +9,4 @@ RUN service postgresql start && su postgres -c "psql -c \"ALTER USER postgres PA
 USER jenkins
 WORKDIR /home/${user}
 
-ENTRYPOINT ["/bin/bash", "-c", "service postgresql start && su jenkins -c jenkins-agent"]
+# ENTRYPOINT ["/bin/bash", "-c", "service postgresql start && su jenkins -c jenkins-agent"]
